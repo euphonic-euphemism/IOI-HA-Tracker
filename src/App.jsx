@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Activity, Lock } from 'lucide-react';
+import { Activity, Lock, KeyRound } from 'lucide-react';
 import { usePatients } from './hooks/usePatients';
 import { StatsDashboard } from './components/StatsDashboard';
 import { PatientForm } from './components/PatientForm';
 import { PatientList } from './components/PatientList';
 import { AssessmentModal } from './components/AssessmentModal';
 import { UnlockScreen } from './components/UnlockScreen';
+import { ChangePasswordModal } from './components/ChangePasswordModal';
 import { decryptData } from './utils/crypto';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
   const { patients, addPatient, deletePatient, updatePatient, stats } = usePatients(encryptionKey);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isChangePasswordOpen, setIsChangePasswordOpen] = useState(false);
   const [currentPatient, setCurrentPatient] = useState(null);
 
   const handleUnlock = (password) => {
@@ -42,6 +44,13 @@ function App() {
 
   const handleLock = () => {
     setEncryptionKey(null);
+  };
+
+  const handleChangePassword = (newPassword) => {
+    // By simply updating the encryptionKey state, the usePatients hook will naturally 
+    // trigger its useEffect, re-encrypt the current 'patients' array with this new key, 
+    // and overwrite localStorage seamlessly.
+    setEncryptionKey(newPassword);
   };
 
   const handleOpenModal = (patient) => {
@@ -78,6 +87,14 @@ function App() {
             <div className="bg-blue-50 text-blue-700 px-4 py-2 rounded-lg text-sm font-medium">
               Population Count: {patients.length}
             </div>
+
+            <button
+              onClick={() => setIsChangePasswordOpen(true)}
+              className="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors border border-transparent hover:border-blue-100"
+              title="Change Password"
+            >
+              <KeyRound size={18} />
+            </button>
             <button
               onClick={handleLock}
               className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-colors border border-transparent hover:border-slate-200"
@@ -100,6 +117,7 @@ function App() {
             patients={patients}
             onDelete={deletePatient}
             onOpenModal={handleOpenModal}
+            onUpdate={updatePatient}
           />
         </div>
       </div>
@@ -110,6 +128,15 @@ function App() {
           patient={currentPatient}
           onClose={() => setIsModalOpen(false)}
           onSave={handleSaveAssessment}
+        />
+      )}
+
+      {/* Change Password Modal */}
+      {isChangePasswordOpen && (
+        <ChangePasswordModal
+          onClose={() => setIsChangePasswordOpen(false)}
+          onChangePassword={handleChangePassword}
+          currentEncryptionKey={encryptionKey}
         />
       )}
     </div>

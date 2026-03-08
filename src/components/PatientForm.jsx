@@ -19,7 +19,8 @@ export const PatientForm = ({ onAddPatient }) => {
             ioiScore: null,
             ioiDetails: null, // Array of 7 scores
             q8Score: null,
-            pdsaNotes: ''
+            pdsaNotes: '',
+            questionnaireSent: false
         };
         onAddPatient(newPatient);
 

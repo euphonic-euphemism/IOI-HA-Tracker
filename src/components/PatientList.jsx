@@ -1,8 +1,8 @@
 import React from 'react';
-import { Calendar, AlertCircle, Calculator, Trash2 } from 'lucide-react';
+import { Calendar, AlertCircle, Calculator, Trash2, Mail, MailCheck } from 'lucide-react';
 import { Card, CardHeader, CardTitle } from './ui/Card';
 
-export const PatientList = ({ patients, onDelete, onOpenModal }) => {
+export const PatientList = ({ patients, onDelete, onOpenModal, onUpdate }) => {
     const calculateMailDate = (dateString) => {
         const date = new Date(dateString);
         date.setDate(date.getDate() + 30);
@@ -55,10 +55,23 @@ export const PatientList = ({ patients, onDelete, onOpenModal }) => {
                                             {patient.fitDate}
                                         </td>
                                         <td className="px-6 py-4">
-                                            <div className={`flex items-center gap-2 text-xs font-medium px-2 py-1 rounded-full w-fit ${due ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 text-slate-600'}`}>
-                                                <Calendar size={14} />
-                                                {mailDate}
-                                                {due && <AlertCircle size={14} />}
+                                            <div className="flex flex-col gap-2">
+                                                <div className={`flex items-center gap-2 text-xs font-medium px-2 py-1 rounded-full w-fit ${due && !patient.questionnaireSent ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 text-slate-600'}`}>
+                                                    <Calendar size={14} />
+                                                    {mailDate}
+                                                    {due && !patient.questionnaireSent && <AlertCircle size={14} />}
+                                                </div>
+                                                <button
+                                                    onClick={() => onUpdate(patient.id, { questionnaireSent: !patient.questionnaireSent })}
+                                                    className={`flex items-center gap-1 text-xs font-medium px-2 py-1 rounded-lg w-fit transition-colors ${patient.questionnaireSent
+                                                            ? 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100'
+                                                            : 'bg-slate-50 text-slate-500 border border-slate-200 hover:bg-slate-100'
+                                                        }`}
+                                                    title={patient.questionnaireSent ? "Questionnaire sent" : "Mark questionnaire as sent"}
+                                                >
+                                                    {patient.questionnaireSent ? <MailCheck size={14} /> : <Mail size={14} />}
+                                                    {patient.questionnaireSent ? 'Sent' : 'Mark Sent'}
+                                                </button>
                                             </div>
                                         </td>
                                         <td className="px-6 py-4">
