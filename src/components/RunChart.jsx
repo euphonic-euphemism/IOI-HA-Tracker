@@ -74,7 +74,11 @@ export const RunChart = ({ patients }) => {
                             formatter={(value, name) => [value, name === 'runningAverage' ? 'Running Avg' : 'Individual Score']}
                             labelFormatter={(label) => `Patient #${label}`}
                         />
-                        <Legend verticalAlign="top" height={36} />
+                        <Legend
+                            verticalAlign="top"
+                            height={36}
+                            formatter={(value) => <span style={{ color: '#334155', fontWeight: 500 }}>{value}</span>}
+                        />
 
                         {/* Normative Data Reference Area (General Approximate Range 2.8 - 4.3 for mixed domains) */}
                         <ReferenceArea
@@ -102,7 +106,7 @@ export const RunChart = ({ patients }) => {
                             strokeWidth={3}
                             dot={false}
                             activeDot={{ r: 6, fill: '#2563EB', stroke: '#fff', strokeWidth: 2 }}
-                            name="runningAverage"
+                            name="Running Average"
                         />
 
                         {/* We can use Line with stroke "none" and dots to act like a scatter plot for individual items if we want, or just a scatter */}
@@ -112,7 +116,7 @@ export const RunChart = ({ patients }) => {
                             stroke="none"
                             dot={{ r: 4, fill: '#94A3B8', strokeWidth: 0 }}
                             activeDot={{ r: 6, fill: '#64748B', strokeWidth: 0 }}
-                            name="individualScore"
+                            name="Individual Score"
                         />
 
                     </LineChart>

@@ -145,7 +145,11 @@ export const QuestionNormsChart = ({ patients }) => {
                                 label={{ value: 'Score', angle: -90, position: 'insideLeft', style: { textAnchor: 'middle' } }}
                             />
                             <Tooltip content={<CustomTooltip />} />
-                            <Legend verticalAlign="top" height={36} />
+                            <Legend
+                                verticalAlign="top"
+                                height={36}
+                                formatter={(value) => <span style={{ color: '#334155', fontWeight: 500 }}>{value}</span>}
+                            />
 
                             {/* Shaded Area for Normative Range */}
                             <Area
