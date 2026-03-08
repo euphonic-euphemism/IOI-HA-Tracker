@@ -156,8 +156,8 @@ export const QuestionNormsChart = ({ patients }) => {
                                 type="step"
                                 dataKey="normTarget"
                                 stroke="none"
-                                fill="#ccfbf1"
-                                fillOpacity={0.6}
+                                fill="#0d9488"
+                                fillOpacity={0.25}
                                 name="Normative Range Target"
                                 activeDot={false}
                             />

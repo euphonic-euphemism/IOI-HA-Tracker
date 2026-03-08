@@ -84,8 +84,8 @@ export const RunChart = ({ patients }) => {
                         <ReferenceArea
                             y1={2.8}
                             y2={4.3}
-                            fill="#ccfbf1"
-                            fillOpacity={0.5}
+                            fill="#0d9488"
+                            fillOpacity={0.25}
                             strokeOpacity={0}
                             ifOverflow="visible"
                         />
