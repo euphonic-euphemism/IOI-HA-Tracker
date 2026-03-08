@@ -1,3 +1,13 @@
+# Release Notes - v1.1.0
+
+## What's New
+* **Factor Analysis**: The IOI-HA score is now intelligently split into its two core diagnostic factors ("Technology/Fitting" and "Lifestyle/Counseling") on both the individual patient rows and the aggregate population stats cards.
+* **Questionnaire Mailing Tracker**: Added a convenient toggle to the patient roster to mark when a one-month follow-up questionnaire has been sent out, including a badge to highlight when a shipment is due.
+* **Change Password**: You can now securely change the master application encryption password from the login screen (using the master reset flow) or while unlocked.
+* **Improved UI Contrast**: Removed the low-contrast pastel green highlights inside the charts and user interface in favor of a deeper, highly-readable Teal theme to ensure text strictly meets WCAG contrast standards.
+
+---
+
 # Release Notes - v1.0.0
 
 🎉 Welcome to the initial release of the **PDSA Outcome Tracker**!
