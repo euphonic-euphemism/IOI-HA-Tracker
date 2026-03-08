@@ -80,8 +80,8 @@ export const RunChart = ({ patients }) => {
                         <ReferenceArea
                             y1={2.8}
                             y2={4.3}
-                            fill="#d1fae5"
-                            fillOpacity={0.3}
+                            fill="#ccfbf1"
+                            fillOpacity={0.5}
                             strokeOpacity={0}
                             ifOverflow="visible"
                         />
@@ -89,8 +89,8 @@ export const RunChart = ({ patients }) => {
                             y1={2.8}
                             y2={4.3}
                             fill="transparent"
-                            stroke="#10b981"
-                            strokeOpacity={0.5}
+                            stroke="#14b8a6"
+                            strokeOpacity={0.6}
                             strokeDasharray="3 3"
                             ifOverflow="visible"
                         />
@@ -120,7 +120,7 @@ export const RunChart = ({ patients }) => {
             </div>
             <div className="mt-4 flex items-center justify-center gap-4 text-sm text-slate-500">
                 <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded bg-emerald-100 border border-emerald-500 border-dashed"></div>
+                    <div className="w-4 h-4 rounded bg-teal-50 border border-teal-500 border-dashed"></div>
                     <span>Normative Target Range (2.8 - 4.3)</span>
                 </div>
             </div>

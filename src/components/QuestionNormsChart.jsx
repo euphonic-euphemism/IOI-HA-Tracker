@@ -75,7 +75,7 @@ export const QuestionNormsChart = ({ patients }) => {
                 <div className="bg-white p-3 border border-slate-200 shadow-lg rounded-lg">
                     <p className="font-semibold text-slate-800 mb-1">{label} Average</p>
                     {avgData && <p className="text-blue-600 font-medium">Score: {avgData.value}</p>}
-                    {normData && <p className="text-emerald-600 text-sm mt-1">Norm Range: {normData.value[0]} - {normData.value[1]}</p>}
+                    {normData && <p className="text-teal-700 text-sm mt-1">Norm Range: {normData.value[0]} - {normData.value[1]}</p>}
                 </div>
             );
         }
@@ -152,7 +152,7 @@ export const QuestionNormsChart = ({ patients }) => {
                                 type="step"
                                 dataKey="normTarget"
                                 stroke="none"
-                                fill="#d1fae5"
+                                fill="#ccfbf1"
                                 fillOpacity={0.6}
                                 name="Normative Range Target"
                                 activeDot={false}

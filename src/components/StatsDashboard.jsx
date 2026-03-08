@@ -11,6 +11,8 @@ export const StatsDashboard = ({ stats, patients }) => {
                 <StatCard
                     title="All Patients"
                     mean={stats.all.mean}
+                    factor1Mean={stats.all.factor1Mean}
+                    factor2Mean={stats.all.factor2Mean}
                     count={stats.all.count}
                     icon={User}
                     colorClass="bg-slate-500 text-slate-600"
@@ -18,13 +20,17 @@ export const StatsDashboard = ({ stats, patients }) => {
                 <StatCard
                     title="New Users"
                     mean={stats.new.mean}
+                    factor1Mean={stats.new.factor1Mean}
+                    factor2Mean={stats.new.factor2Mean}
                     count={stats.new.count}
                     icon={User}
-                    colorClass="bg-emerald-500 text-emerald-600"
+                    colorClass="bg-teal-600 text-teal-700"
                 />
                 <StatCard
                     title="Exp. Users"
                     mean={stats.experienced.mean}
+                    factor1Mean={stats.experienced.factor1Mean}
+                    factor2Mean={stats.experienced.factor2Mean}
                     count={stats.experienced.count}
                     icon={User}
                     colorClass="bg-indigo-500 text-indigo-600"

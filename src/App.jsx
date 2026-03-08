@@ -62,8 +62,18 @@ function App() {
     const sum = ioiDetails.reduce((a, b) => parseInt(a) + parseInt(b), 0);
     const average = parseFloat((sum / 7).toFixed(1));
 
+    // Factor 1 (Tech/Fitting): Items 1, 2, 4, 7 (Indices 0, 1, 3, 6)
+    const f1Sum = parseInt(ioiDetails[0]) + parseInt(ioiDetails[1]) + parseInt(ioiDetails[3]) + parseInt(ioiDetails[6]);
+    const factor1 = parseFloat((f1Sum / 4).toFixed(1));
+
+    // Factor 2 (Lifestyle/Counseling): Items 3, 5, 6 (Indices 2, 4, 5)
+    const f2Sum = parseInt(ioiDetails[2]) + parseInt(ioiDetails[4]) + parseInt(ioiDetails[5]);
+    const factor2 = parseFloat((f2Sum / 3).toFixed(1));
+
     updatePatient(id, {
       ioiScore: average,
+      factor1Score: factor1,
+      factor2Score: factor2,
       ioiDetails: ioiDetails,
       q8Score: q8Score
     });

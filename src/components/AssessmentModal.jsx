@@ -82,7 +82,7 @@ export const AssessmentModal = ({ patient, onClose, onSave }) => {
                                             </div>
                                         )}
                                         {status === 'within' && (
-                                            <div className="flex items-center gap-1 text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded">
+                                            <div className="flex items-center gap-1 text-xs font-bold text-teal-700 bg-teal-50 px-2 py-1 rounded">
                                                 Within Norm
                                             </div>
                                         )}
@@ -110,7 +110,7 @@ export const AssessmentModal = ({ patient, onClose, onSave }) => {
                                                     `}
                                                 >
                                                     {isNorm && (
-                                                        <div className={`absolute left-0 top-0 bottom-0 w-1 ${isSelected ? 'bg-white/50' : 'bg-emerald-400'}`} title="Normative Range"></div>
+                                                        <div className={`absolute left-0 top-0 bottom-0 w-1 ${isSelected ? 'bg-white/50' : 'bg-teal-500'}`} title="Normative Range"></div>
                                                     )}
 
                                                     <div className="flex items-center gap-3 pl-2">
@@ -120,7 +120,7 @@ export const AssessmentModal = ({ patient, onClose, onSave }) => {
                                                             {isSelected && <div className="w-2.5 h-2.5 rounded-full bg-white" />}
                                                         </div>
                                                         <span className="flex-1">{opt.label}</span>
-                                                        {isNorm && !isSelected && <span className="text-[10px] text-emerald-600 font-medium bg-emerald-50 px-1.5 py-0.5 rounded">Norm</span>}
+                                                        {isNorm && !isSelected && <span className="text-[10px] text-teal-700 font-medium bg-teal-50 px-1.5 py-0.5 rounded">Norm</span>}
                                                     </div>
                                                 </button>
                                             );

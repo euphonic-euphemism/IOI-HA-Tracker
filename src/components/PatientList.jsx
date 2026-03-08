@@ -64,8 +64,8 @@ export const PatientList = ({ patients, onDelete, onOpenModal, onUpdate }) => {
                                                 <button
                                                     onClick={() => onUpdate(patient.id, { questionnaireSent: !patient.questionnaireSent })}
                                                     className={`flex items-center gap-1 text-xs font-medium px-2 py-1 rounded-lg w-fit transition-colors ${patient.questionnaireSent
-                                                            ? 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100'
-                                                            : 'bg-slate-50 text-slate-500 border border-slate-200 hover:bg-slate-100'
+                                                        ? 'bg-teal-50 text-teal-700 hover:bg-teal-100'
+                                                        : 'bg-slate-50 text-slate-500 border border-slate-200 hover:bg-slate-100'
                                                         }`}
                                                     title={patient.questionnaireSent ? "Questionnaire sent" : "Mark questionnaire as sent"}
                                                 >
@@ -78,12 +78,20 @@ export const PatientList = ({ patients, onDelete, onOpenModal, onUpdate }) => {
                                             {patient.ioiScore ? (
                                                 <button
                                                     onClick={() => onOpenModal(patient)}
-                                                    className="flex items-center gap-2 hover:bg-slate-200 px-3 py-1 rounded-lg transition-colors"
+                                                    className="flex flex-col items-start gap-1 hover:bg-slate-100 p-2 -ml-2 rounded-lg transition-colors text-left group-hover:bg-slate-200"
                                                 >
-                                                    <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-white ${patient.ioiScore >= 4 ? 'bg-emerald-500' : patient.ioiScore >= 3 ? 'bg-amber-500' : 'bg-red-500'}`}>
-                                                        {patient.ioiScore}
+                                                    <div className="flex items-center gap-2">
+                                                        <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-white ${patient.ioiScore >= 4 ? 'bg-teal-600' : patient.ioiScore >= 3 ? 'bg-amber-500' : 'bg-red-500'}`}>
+                                                            {patient.ioiScore}
+                                                        </div>
+                                                        <span className="text-xs text-slate-500 hidden group-hover:inline">Edit</span>
                                                     </div>
-                                                    <span className="text-xs text-slate-500 hidden group-hover:inline">Edit</span>
+                                                    {patient.factor1Score !== undefined && (
+                                                        <div className="flex gap-3 text-[10px] text-slate-500 mt-1 font-medium">
+                                                            <span title="Technology/Fitting Factor" className="bg-slate-200 px-1.5 py-0.5 rounded">F1: {patient.factor1Score}</span>
+                                                            <span title="Lifestyle/Counseling Factor" className="bg-slate-200 px-1.5 py-0.5 rounded">F2: {patient.factor2Score}</span>
+                                                        </div>
+                                                    )}
                                                 </button>
                                             ) : (
                                                 <button
