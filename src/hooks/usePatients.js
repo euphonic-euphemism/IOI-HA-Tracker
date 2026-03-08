@@ -53,7 +53,7 @@ export function usePatients(encryptionKey) {
 
     const calculateStats = (subset) => {
         const scoredPatients = subset.filter(p => p.ioiScore !== null);
-        if (scoredPatients.length === 0) return { mean: "N/A", median: "N/A", count: 0 };
+        if (scoredPatients.length === 0) return { mean: "N/A", count: 0 };
 
         const scores = scoredPatients.map(p => p.ioiScore).sort((a, b) => a - b);
 
@@ -61,13 +61,7 @@ export function usePatients(encryptionKey) {
         const sum = scores.reduce((a, b) => a + b, 0);
         const mean = (sum / scores.length).toFixed(1);
 
-        // Median
-        const mid = Math.floor(scores.length / 2);
-        const median = scores.length % 2 !== 0
-            ? scores[mid]
-            : ((scores[mid - 1] + scores[mid]) / 2).toFixed(1);
-
-        return { mean, median, count: scores.length };
+        return { mean, count: scores.length };
     };
 
     const stats = useMemo(() => {
