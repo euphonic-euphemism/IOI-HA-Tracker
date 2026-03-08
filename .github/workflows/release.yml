@@ -53,6 +53,6 @@ jobs:
           tagName: app-v__VERSION__ # the action automatically replaces __VERSION__ with the app version
           releaseName: 'PDSA Outcome Tracker v__VERSION__'
           releaseBody: 'See the attached assets for the latest desktop installer binaries.'
-          releaseDraft: true
+          releaseDraft: false
           prerelease: false
           args: ${{ matrix.args }}
